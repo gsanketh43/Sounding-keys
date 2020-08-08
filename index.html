@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Paper Graphics</title>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.0/howler.min.js"></script>
+	<script type="text/javascript" src="j.js"></script>
+	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/paperscript" canvas="myCanvas">
+	var sound = new Howl({
+  	src: ['bubbles.mp3']
+	});
+
+	
+	var an=[];
+	function onKeyDown(event) {
+		sound.play();
+
+	var maxpoint=new Point(view.size.width, view.size.height);
+	var randompoint=Point.random();
+	var point=maxpoint*randompoint;
+	var newcircle=new Path.Circle(point, 100);
+	newcircle.fillColor="orange";
+	an.push(newcircle);
+}
+
+function onFrame(event) {
+	for(var i=0;i<an.length;i++){
+	an[i].fillColor.hue += 2;
+	an[i].scale(0.95);
+    }}
+	
+	</script>
+	<style type="text/css">
+		canvas{
+			width:100%;
+			background: black;
+
+		}
+		body, html{
+			height:100%;
+			margin:0;
+		}
+		
+	</style>
+</head>
+<body>
+	<h1>PLEASE OPEN IN A PC/LAPTOP</h1>
+	<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
